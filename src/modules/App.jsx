@@ -28,7 +28,7 @@ const App = () => {
     <>
     <Header></Header>
     <FeatureContainer feature={feature} total={total}></FeatureContainer>
-    <ArticleContainer></ArticleContainer>
+    <ArticleContainer stories={topStories}></ArticleContainer>
     </>
   );
 }
