@@ -13,7 +13,7 @@ const Header = () => {
         <Select
         labelId="category-select"
         id="category-select"
-        value="Categories"
+        value=""
         label="categories"
         >
           {categories.map((cat, i) => {
