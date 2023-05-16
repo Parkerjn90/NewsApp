@@ -6,11 +6,22 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
 
   const categories = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
   const [keyword, setKeyword ] = useState('');
+  const [isClicked, setClicked] = useState({
+    US: true,
+    UK: false,
+    FR: false,
+  })
+
+  const goHome = (e) => {
+    e.preventDefault();
+    getTopStories();
+  }
 
   const changeCountry = (e) => {
     e.preventDefault();
     getTopStories(e.target.value)
     setCountry(e.target.value)
+    changeButton(e.target.id)
   }
 
   const changeCategory = (e) => {
@@ -33,11 +44,37 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
     }
   }
 
+  const changeButton = (value) => {
+    for (let key in isClicked) {
+      if (key === value) {
+        console.log(key)
+        console.log(value)
+        setClicked((isClicked) => ({
+          ...isClicked,
+          [key]: true
+        }));
+      } else {
+        setClicked((isClicked) => ({
+          ...isClicked,
+          [key]: false
+        }))
+      }
+    }
+    console.log(isClicked);
+  }
+
   return (
     <>
     <Grid container spacing={2} sx={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
       <Grid item xl={5} sx={{display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center"}}>
-        <Button>Top News</Button>
+        <Button onClick={goHome}
+          sx={{
+            "&.Mui-selected, &.Mui-selected:hover": {
+              color: "purple",
+              backgroundColor: "gray",
+            }
+          }}
+        >Top News</Button>
         <InputLabel id="category-select">Categories</InputLabel>
         <Select
         labelId="category-select"
@@ -56,9 +93,24 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
         <h1>Today's Top Headlines</h1>
       </Grid>
       <Grid item sx={{}}>
-        <Button onClick={changeCountry} value="US">US</Button>
-        <Button onClick={changeCountry} value="GB">UK</Button>
-        <Button onClick={changeCountry} value="FR">FR</Button>
+        <Button
+        onClick={changeCountry}
+        value="US"
+        id="US"
+        style={isClicked["US"] ? {backgroundColor: "gray"} : {backgroundColor: "white"}}
+        >US</Button>
+        <Button
+        onClick={changeCountry}
+        value="GB"
+        id="UK"
+        style={isClicked["UK"] ? {backgroundColor: "gray"} : {backgroundColor: "white"}}
+        >UK</Button>
+        <Button
+        onClick={changeCountry}
+        value="FR"
+        id="FR"
+        style={isClicked["FR"] ? {backgroundColor: "gray"} : {backgroundColor: "white"}}
+        >FR</Button>
       </Grid>
     </Grid>
     </>
