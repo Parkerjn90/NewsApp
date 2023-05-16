@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 
 import Article from './articles.jsx'
 
-const ArticleContainer = ({ stories }) => {
+const ArticleContainer = ({ stories, currentCountry }) => {
 
 
   return (

@@ -2,7 +2,7 @@ import { Grid, Stack } from '@mui/material';
 
 import FeatureStory from './featureStory.jsx'
 
-const FeatureContainer = ({ feature, total }) => {
+const FeatureContainer = ({ feature, total, currentCountry }) => {
 
   return (
     <Stack container spacing={2} direction="column" sx={{ justifyContent: "center", width: "80%", margin: "auto", marginBotton: "5px" }}>

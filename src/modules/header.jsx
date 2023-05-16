@@ -1,12 +1,18 @@
 import { Grid, Button, TextField, Select, InputLabel, MenuItem } from '@mui/material'
 
-const Header = ({ getTopStories }) => {
+const Header = ({ getTopStories, getStoriesByCategory, setCountry }) => {
 
   const categories = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
 
   const changeCountry = (e) => {
     e.preventDefault();
     getTopStories(e.target.value)
+    setCountry(e.target.value)
+  }
+
+  const changeCategory = (e) => {
+    e.preventDefault();
+    getStoriesByCategory(e.target.value)
   }
 
   return (
@@ -20,9 +26,10 @@ const Header = ({ getTopStories }) => {
         id="category-select"
         value=""
         label="categories"
+        onChange={changeCategory}
         >
           {categories.map((cat, i) => {
-            return <MenuItem key={i}>{cat}</MenuItem>
+            return <MenuItem key={i} value={cat.toLowerCase()} >{cat}</MenuItem>
           })}
         </Select>
         <TextField id="standard-basic" label="Search for a Topic" variant="standard"></TextField>
