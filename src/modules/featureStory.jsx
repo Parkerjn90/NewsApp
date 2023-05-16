@@ -1,6 +1,6 @@
-import { Grid, Box } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material'
 
-const FeatureStory = ({ feature, getMoreDetails }) => {
+const FeatureStory = ({ feature, getMoreDetails, stripHTML }) => {
 
   const sendWhichStory = (e) => {
     e.preventDefault();
@@ -20,7 +20,6 @@ const FeatureStory = ({ feature, getMoreDetails }) => {
         flexDirection: "column"
       }}>
       <Grid sx={{ margin: "auto" }}>
-        {feature.urlToImage === null ?
           <Box
             component="img"
             sx={{
@@ -29,35 +28,20 @@ const FeatureStory = ({ feature, getMoreDetails }) => {
               maxHeight: { xs: 200, md: 300, lg: 500, xl: 600 },
               maxWidth: { xs: 350, md: 500, lg: 800, xl: 1000 },
               objectFit: "cover",
-              margin: "auto"
+              margin: "auto",
+              borderRadius: "5px"
             }}
-            alt="default news image, no image for the article provided"
-            src="https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376_960_720.jpg"
-          ></Box> :
-          <Box
-            component="img"
-            sx={{
-              // height: 400,
-              width: 1000,
-              height: 600,
-              objectFit: "cover",
-              maxHeight: { xs: 200, md: 300, lg: 500, xl: 600 },
-              maxWidth: { xs: 350, md: 500, lg: 800, xl: 1000 },
-              margin: "auto"
-            }}
-            alt={feature.description}
-            src={feature.urlToImage}
-          >
-          </Box>
-        }
+            alt={feature.description === null ? "default news image, no image for the article provided" : `${feature.description}`}
+            src={feature.urlToImage === null ? "https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376_960_720.jpg" : `${feature.urlToImage}`}
+          ></Box>
       </Grid>
       <Grid>
         <a href={feature.url} style={{ textDecoration: "none" }}>
-          <h2>{feature.title}</h2>
+          <Typography sx={{fontSize: "30px", fontWeight: "400"}}>{feature.title}</Typography>
         </a>
       </Grid>
       <Grid>
-        <p>{feature.description}</p>
+        <Typography sx={{fontSize: "20px", fontWeight: "300"}}>{`${stripHTML(feature.description)}`}</Typography>
       </Grid>
     </Grid>
   );

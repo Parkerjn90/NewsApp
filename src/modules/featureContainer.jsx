@@ -1,22 +1,23 @@
-import { Grid, Stack } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 import FeatureStory from './featureStory.jsx'
 
-const FeatureContainer = ({ feature, total, currentCountry, getMoreDetails }) => {
+const FeatureContainer = ({ feature, total, currentCountry, getMoreDetails, stripHTML }) => {
 
   return (
-    <Stack container spacing={2} direction="column" sx={{ justifyContent: "center", width: "80%", margin: "auto", marginBotton: "5px" }}>
+    <Stack container spacing={2} direction="column" sx={{ justifyContent: "center", width: "80%", margin: "auto", marginBotton: "5px", padding: "4px" }}>
       <Grid container spacing={2} sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <Grid sx={6}>
-          <h2>Featured Story:</h2>
+          <Typography sx={{fontSize: "40px", fontWeight: 400}}>Featured Story:</Typography>
         </Grid>
         <Grid sx={6}>
-          <h2>Showing {total} results</h2>
+          <Typography sx={{fontSize: "40px", fontWeight: 400}}>Showing {total} results</Typography>
         </Grid>
       </Grid>
         {feature === undefined ?
-        <h1>No Stories Available</h1>  :
-        <FeatureStory feature={feature} style={{ margin: "auto" }} getMoreDetails={getMoreDetails}></FeatureStory>
+        <Typography sx={{fontSize: "40px", fontWeight: 400}}>No Stories Available</Typography>  :
+        <FeatureStory feature={feature} style={{ margin: "auto" }} getMoreDetails={getMoreDetails} stripHTML={stripHTML}></FeatureStory>
       }
 
     </Stack>

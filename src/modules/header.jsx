@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { Grid, Button, TextField, Select, InputLabel, MenuItem } from '@mui/material';
+import { Grid, Button, TextField, Select, InputLabel, MenuItem, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) => {
 
@@ -11,6 +12,8 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
     UK: false,
     FR: false,
   })
+
+  const theme = useTheme()
 
   const goHome = (e) => {
     e.preventDefault();
@@ -66,15 +69,8 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
   return (
     <>
     <Grid container spacing={2} sx={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-      <Grid item xl={5} sx={{display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center"}}>
-        <Button onClick={goHome}
-          sx={{
-            "&.Mui-selected, &.Mui-selected:hover": {
-              color: "purple",
-              backgroundColor: "gray",
-            }
-          }}
-        >Top News</Button>
+      <Grid item xl={3} sx={{display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center"}}>
+        <Button onClick={goHome}>Top News</Button>
         <InputLabel id="category-select">Categories</InputLabel>
         <Select
         labelId="category-select"
@@ -90,7 +86,7 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
         <TextField id="standard-basic" label="Search for a Topic" variant="standard" onChange={saveQuery} onKeyPress={queryStories} value={keyword}></TextField>
       </Grid>
       <Grid item xl={4}>
-        <h1>Today's Top Headlines</h1>
+        <Typography style={{fontFamily:`${theme.typography.h1}, sanserif`, fontWeight: 500, fontSize: 50}}>Today's Top Headlines</Typography>
       </Grid>
       <Grid item sx={{}}>
         <Button

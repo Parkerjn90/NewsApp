@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 
 import Article from './articles.jsx'
 
-const ArticleContainer = ({ stories, currentCountry, getMoreDetails }) => {
+const ArticleContainer = ({ stories, currentCountry, getMoreDetails, stripHTML }) => {
 
 
   return (
@@ -19,7 +19,7 @@ const ArticleContainer = ({ stories, currentCountry, getMoreDetails }) => {
               height: {sm: 400, md: 500}, borderRadius: "5px",
               backgroundColor: "#b6b8c280", marginTop: "5px", overflow: "hidden",
               padding: "10px" }}>
-              <Article key={i + 100} story={story} index={i} getMoreDetails={getMoreDetails}></Article>
+              <Article key={i + 100} story={story} index={i} getMoreDetails={getMoreDetails} stripHTML={stripHTML}></Article>
             </Grid>
           )
         };
