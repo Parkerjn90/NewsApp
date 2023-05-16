@@ -1,8 +1,13 @@
 import { Grid, Button, TextField, Select, InputLabel, MenuItem } from '@mui/material'
 
-const Header = () => {
+const Header = ({ getTopStories }) => {
 
   const categories = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
+
+  const changeCountry = (e) => {
+    e.preventDefault();
+    getTopStories(e.target.value)
+  }
 
   return (
     <>
@@ -26,8 +31,9 @@ const Header = () => {
         <h1>Today's Top Headlines</h1>
       </Grid>
       <Grid item sx={{}}>
-        <Button>US</Button>
-        <Button>UK</Button>
+        <Button onClick={changeCountry} value="US">US</Button>
+        <Button onClick={changeCountry} value="GB">UK</Button>
+        <Button onClick={changeCountry} value="FR">FR</Button>
       </Grid>
     </Grid>
     </>

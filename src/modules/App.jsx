@@ -35,7 +35,7 @@ const App = () => {
           marginBottom: "5px",
         }}
       >
-        <Header></Header>
+        <Header getTopStories={getTopStories}></Header>
       </Box>
       <Box
         component="div"
