@@ -1,9 +1,12 @@
 import { Box, Button, Grid } from '@mui/material';
 import moment from 'moment';
 
-const DetailPage = ({ selectedStory }) => {
+const DetailPage = ({ selectedStory, getMoreDetails }) => {
 
-  console.log('selected', selectedStory.source.name)
+  const closeDetails = (e) => {
+    e.preventDefault();
+    getMoreDetails();
+  }
 
   return (
 
@@ -11,9 +14,10 @@ const DetailPage = ({ selectedStory }) => {
       component="div"
       sx={{
         backgroundColor: "white",
-        width: { xs: 300, md: 500, lg: 900, xl: 1500 },
+        width: { xs: 400, md: 600, lg: 900, xl: 1500 },
         // height: { xs: 300, md: 500, lg: 900, xl: 1500 },
-        padding: "10px"
+        padding: "10px",
+        zIndex: 2
       }}
     >
       <Grid
@@ -21,8 +25,7 @@ const DetailPage = ({ selectedStory }) => {
         component="div"
         spacing={10}
         sx={{
-          border: "2px solid green",
-          width: { xs: 250, md: 450, lg: 850, xl: 1450 },
+          width: { xs: 350, md: 500, lg: 850, xl: 1450 },
           margin: "auto",
           display: "flex",
           justifyContent: "center",
@@ -39,7 +42,7 @@ const DetailPage = ({ selectedStory }) => {
             justifyContent: "flex-end",
           }}
         >
-          <Button>
+          <Button onClick={closeDetails}>
             Close
           </Button>
         </Grid>
@@ -63,7 +66,7 @@ const DetailPage = ({ selectedStory }) => {
               width: 1000,
               height: 600,
               maxHeight: { xs: 200, md: 300, lg: 500, xl: 600 },
-              maxWidth: { xs: 350, md: 500, lg: 800, xl: 1000 },
+              maxWidth: { xs: 250, md: 400, lg: 800, xl: 1000 },
               objectFit: "cover",
               margin: "auto",
               borderRadius: "5px",
@@ -79,7 +82,8 @@ const DetailPage = ({ selectedStory }) => {
           <Box
             component="p"
             sx={{ display: "inline", margin: "20px" }}
-          >Author: {`${selectedStory.author}`.replace(/,/g, ', ')} via "{selectedStory.source.name}"
+          >Author: {`${selectedStory.author}`.replace(/,/g, ', ')} via
+          {/* "{selectedStory.source.name}" */}
           </Box>
           <Box
             component="p"

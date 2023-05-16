@@ -14,7 +14,7 @@ const App = () => {
   const [topStories, setTopStories] = useState([]);
   const [feature, setFeature] = useState({});
   const [currentCountry, setCountry]= useState("US");
-  const [showDetails, setShowDetails] = useState(true);
+  const [showDetails, setShowDetails] = useState(false);
   const [selectedStory, setSelectedStory] = useState({});
 
   const getTopStories = (country = currentCountry) => {
@@ -49,7 +49,9 @@ const App = () => {
   };
 
   const getMoreDetails = (index = 0) => {
+    console.log(index, 'index');
     setSelectedStory(topStories[index]);
+    setShowDetails(!showDetails);
   }
 
   useEffect(() => { getTopStories() }, []);
@@ -66,6 +68,7 @@ const App = () => {
         sx={{
           marginTop: "5px",
           marginBottom: "5px",
+          zIndex: 1
         }}
       >
         <Header
@@ -74,41 +77,54 @@ const App = () => {
         setCountry={setCountry}
         getQuery={getQuery}></Header>
       </Box>
-      {/* <Box
+      <Box
         component="div"
         sx={{
           marginTop: "5px",
           marginBottom: "5px",
           backgroundColor: "#b6b8c280",
-          padding: "10px"
+          padding: "10px",
+          zIndex: 1
         }}
       >
-        <FeatureContainer feature={feature} total={total} getMoreDetails={getMoreDetails}></FeatureContainer>
-      </Box> */}
-      {/* <Box
+        <FeatureContainer
+        feature={feature}
+        total={total}
+        getMoreDetails={getMoreDetails}></FeatureContainer>
+      </Box>
+      <Box
         component="div"
         sx={{
           margin: "5px",
-          paddingTop: "20px"
+          paddingTop: "20px",
+                    zIndex: 1
         }}
       >
-        <ArticleContainer stories={topStories} getMoreDetails={getMoreDetails}></ArticleContainer>
-      </Box> */}
+        <ArticleContainer
+        stories={topStories}
+        getMoreDetails={getMoreDetails}></ArticleContainer>
+      </Box>
       { showDetails
       && <Box
         sx={{
           backgroundColor: "#b6b8c280",
-          zIndex: 2,
+          zIndex: 10,
           display: "flex",
           justifyContent: "center",
           alignContent: "center",
           width: "99%",
           // height: "99%",
-          padding: "10px"
+          padding: "10px",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
         }}
       >
         <DetailPage
         selectedStory={selectedStory}
+        getMoreDetails={getMoreDetails}
       ></DetailPage>
       </Box>}
     </div>

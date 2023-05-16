@@ -1,13 +1,18 @@
 import { Box } from '@mui/material';
 
-const Article = ({ story }) => {
+const Article = ({ story, getMoreDetails, index }) => {
 
+  const openDetails = (e) => {
+    e.preventDefault();
+    getMoreDetails(index)
+  }
 
   return (
     <>
       <Box
         component="div"
         sx={{ width: "95%", margin: "auto", display: "flex", justifyContent: "center", flexDirection: "column" }}
+        onClick={openDetails}
       >
         <Box
         component="h3"
