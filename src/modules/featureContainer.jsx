@@ -2,7 +2,7 @@ import { Grid, Stack } from '@mui/material';
 
 import FeatureStory from './featureStory.jsx'
 
-const FeatureContainer = ({ feature, total, currentCountry }) => {
+const FeatureContainer = ({ feature, total, currentCountry, getMoreDetails }) => {
 
   return (
     <Stack container spacing={2} direction="column" sx={{ justifyContent: "center", width: "80%", margin: "auto", marginBotton: "5px" }}>
@@ -16,7 +16,7 @@ const FeatureContainer = ({ feature, total, currentCountry }) => {
       </Grid>
         {feature === undefined ?
         <h1>No Stories Available</h1>  :
-        <FeatureStory feature={feature} style={{ margin: "auto" }}></FeatureStory>
+        <FeatureStory feature={feature} style={{ margin: "auto" }} getMoreDetails={getMoreDetails}></FeatureStory>
       }
 
     </Stack>
