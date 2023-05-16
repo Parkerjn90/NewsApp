@@ -97,19 +97,19 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
         onClick={changeCountry}
         value="US"
         id="US"
-        style={isClicked["US"] ? {backgroundColor: "gray"} : {backgroundColor: "white"}}
+        style={isClicked["US"] ? {backgroundColor: "#b6b8c280"} : {backgroundColor: "white"}}
         >US</Button>
         <Button
         onClick={changeCountry}
         value="GB"
         id="UK"
-        style={isClicked["UK"] ? {backgroundColor: "gray"} : {backgroundColor: "white"}}
+        style={isClicked["UK"] ? {backgroundColor: "#b6b8c280"} : {backgroundColor: "white"}}
         >UK</Button>
         <Button
         onClick={changeCountry}
         value="FR"
         id="FR"
-        style={isClicked["FR"] ? {backgroundColor: "gray"} : {backgroundColor: "white"}}
+        style={isClicked["FR"] ? {backgroundColor: "#b6b8c280"} : {backgroundColor: "white"}}
         >FR</Button>
       </Grid>
     </Grid>
