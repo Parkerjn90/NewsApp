@@ -1,8 +1,11 @@
-import { Grid, Button, TextField, Select, InputLabel, MenuItem } from '@mui/material'
+import { useState } from 'react';
 
-const Header = ({ getTopStories, getStoriesByCategory, setCountry }) => {
+import { Grid, Button, TextField, Select, InputLabel, MenuItem } from '@mui/material';
+
+const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) => {
 
   const categories = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
+  const [keyword, setKeyword ] = useState('');
 
   const changeCountry = (e) => {
     e.preventDefault();
@@ -13,6 +16,21 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry }) => {
   const changeCategory = (e) => {
     e.preventDefault();
     getStoriesByCategory(e.target.value)
+  }
+
+  const saveQuery = (e) => {
+    e.preventDefault();
+    console.log(e.target.value)
+    setKeyword(e.target.value);
+  }
+
+  const queryStories = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      console.log(keyword);
+      getQuery(e.target.value)
+      setKeyword('');
+    }
   }
 
   return (
@@ -32,7 +50,7 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry }) => {
             return <MenuItem key={i} value={cat.toLowerCase()} >{cat}</MenuItem>
           })}
         </Select>
-        <TextField id="standard-basic" label="Search for a Topic" variant="standard"></TextField>
+        <TextField id="standard-basic" label="Search for a Topic" variant="standard" onChange={saveQuery} onKeyPress={queryStories} value={keyword}></TextField>
       </Grid>
       <Grid item xl={4}>
         <h1>Today's Top Headlines</h1>

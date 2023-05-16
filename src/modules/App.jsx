@@ -34,6 +34,16 @@ const App = () => {
     .catch(err => console.log('App.jsx error, getStoriesByCategory', err));
   };
 
+  const getQuery = (query) => {
+    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=3df0162e66714d528e79e3935312c7d7&country=${currentCountry}&q=${query}&language=en`)
+    .then(results => {
+      setTopStories(results.data.articles);
+      setTotal(results.data.totalResults);
+      setFeature(results.data.articles[0]);
+    })
+    .catch(err => console.log('App.jsx error, getQuery', err));
+  };
+
   useEffect(() => { getTopStories() }, []);
 
 
@@ -46,7 +56,11 @@ const App = () => {
           marginBottom: "5px",
         }}
       >
-        <Header getTopStories={getTopStories} getStoriesByCategory={getStoriesByCategory} setCountry={setCountry}></Header>
+        <Header
+        getTopStories={getTopStories}
+        getStoriesByCategory={getStoriesByCategory}
+        setCountry={setCountry}
+        getQuery={getQuery}></Header>
       </Box>
       <Box
         component="div"
