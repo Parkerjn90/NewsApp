@@ -3,7 +3,7 @@ import { Grid, Box } from '@mui/material'
 const FeatureStory = ({ feature }) => {
 
   return (
-    <Grid container spacing={2} sx={{margin: "auto", padding: "10px", display: "flex", justifyContent: "center"}}>
+    <Grid container spacing={2} sx={{margin: "auto", padding: "10px", display: "flex", justifyContent: "center", flexDirection: "column"}}>
       <Grid sx={{margin: "auto"}}>
       {feature.urlToImage === null ?
         <Box

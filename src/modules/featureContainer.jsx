@@ -14,8 +14,10 @@ const FeatureContainer = ({ feature, total, currentCountry }) => {
           <h2>Showing {total} results</h2>
         </Grid>
       </Grid>
-
+        {feature === undefined ?
+        <h1>No Stories Available</h1>  :
         <FeatureStory feature={feature} style={{ margin: "auto" }}></FeatureStory>
+      }
 
     </Stack>
   );
