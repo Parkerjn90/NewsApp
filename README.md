@@ -3,7 +3,7 @@
 ## Run the following Commands:
 Once you've forked and cloned the repo:
 
-### npm install
+### `npm install`
 
 You will need an API key for the News API - you can get one here: https://newsapi.org/
 Then go into the App.jsx file, and change the api variable to your specific API Key
