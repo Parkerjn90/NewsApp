@@ -46,6 +46,7 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
 
   const changeCategory = (e) => {
     e.preventDefault();
+    console.log('category', e.target.value)
     getStoriesByCategory(e.target.value)
   }
 
@@ -126,7 +127,7 @@ const Header = ({ getTopStories, getStoriesByCategory, setCountry, getQuery }) =
             <Select
               id="category-select"
               labelId="category-label"
-              value="Categories"
+              value=""
               MenuProps={{
                 anchorOrigin: {
                   vertical: "bottom",

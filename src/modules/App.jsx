@@ -18,7 +18,7 @@ const App = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [selectedStory, setSelectedStory] = useState({});
 
-  const api = "692b815f6bae471ca4ed436221960e26"
+  const api = "API_KEY_GOES_HERE"
 
   const theme = createTheme({
     typography: {
@@ -55,8 +55,10 @@ const App = () => {
   };
 
   const getStoriesByCategory = (category) => {
-    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=${api}&country=${currentCountry}&category=${category}$&language=en`)
+    console.log('category: ', `https://newsapi.org/v2/top-headlines?apiKey=${api}&category=${category}&language=en`);
+    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=${api}&category=${category}&language=en`)
       .then(results => {
+        console.log(results.data.articles)
         setTopStories(results.data.articles);
         setTotal(results.data.totalResults);
         setFeature(results.data.articles[0]);
