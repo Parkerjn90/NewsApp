@@ -8,7 +8,7 @@ Once you've forked and cloned the repo:
 You will need an API key for the News API - you can get one here: https://newsapi.org/
 Then go into the App.jsx file, and change the api variable to your specific API Key
 
-Then you can run one of the following commands:
+## Then you can run one of the following commands:
 ### `npm start`
 
 Runs the app in the development mode.\
