@@ -1,4 +1,4 @@
-import { Grid, Box, Typography } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material';
 
 const FeatureStory = ({ feature, getMoreDetails, stripHTML }) => {
 
@@ -36,9 +36,7 @@ const FeatureStory = ({ feature, getMoreDetails, stripHTML }) => {
           ></Box>
       </Grid>
       <Grid>
-        <a href={feature.url} style={{ textDecoration: "none" }}>
           <Typography sx={{fontSize: "30px", fontWeight: "400"}}>{feature.title}</Typography>
-        </a>
       </Grid>
       <Grid>
         <Typography sx={{fontSize: "20px", fontWeight: "300"}}>{`${stripHTML(feature.description)}`}</Typography>

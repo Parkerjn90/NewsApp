@@ -37,8 +37,8 @@ const App = () => {
   });
 
   const stripHTML = (string) => {
-    let newString = new DOMParser().parseFromString(string, "text/html")
-    return newString.body.textContent || "";
+    let string2 = new DOMParser().parseFromString(string, "text/html") || ""
+    return string2.body.textContent || ""
   }
 
   const getTopStories = (country = currentCountry) => {
@@ -73,7 +73,6 @@ const App = () => {
   };
 
   const getMoreDetails = (index = 0) => {
-    console.log(index, 'index');
     setSelectedStory(topStories[index]);
     setShowDetails(!showDetails);
   }
