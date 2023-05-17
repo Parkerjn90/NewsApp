@@ -6,7 +6,13 @@ const ArticleContainer = ({ stories, currentCountry, getMoreDetails, stripHTML }
 
 
   return (
-    <Grid container spacing={2} sx={{ display: "flex", justifyContent: "space-around" }}>
+    <Grid
+      container
+      spacing={2}
+      sx={{
+        display: "flex",
+        justifyContent: "space-around"
+      }}>
 
       {stories.length === 0 ?
         <div>No headlines available to display</div> : (
@@ -22,7 +28,13 @@ const ArticleContainer = ({ stories, currentCountry, getMoreDetails, stripHTML }
                     padding: "10px"
                   }}>
                     <Typography>
-                      <Article key={i + 100} story={story} index={i} getMoreDetails={getMoreDetails} stripHTML={stripHTML}></Article>
+                      <Article
+                        key={i + 100}
+                        story={story}
+                        index={i}
+                        getMoreDetails={getMoreDetails}
+                        stripHTML={stripHTML}>
+                      </Article>
                     </Typography>
                   </Grid>
                 )

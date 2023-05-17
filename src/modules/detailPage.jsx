@@ -15,7 +15,6 @@ const DetailPage = ({ selectedStory, getMoreDetails }) => {
       sx={{
         backgroundColor: "white",
         width: { xs: 400, md: 600, lg: 900, xl: 1500 },
-        // height: { xs: 300, md: 500, lg: 900, xl: 1500 },
         padding: "10px",
         zIndex: 2
       }}
@@ -50,18 +49,32 @@ const DetailPage = ({ selectedStory, getMoreDetails }) => {
           sx={{
             width: "90%",
             margin: "auto"
-          }}>
+          }}
+        >
           <h1
-            style={{ textAlign: "center" }}>{selectedStory.title}</h1>
+            style={{
+              textAlign: "center"
+            }}
+          >
+            {selectedStory.title}
+          </h1>
         </Grid>
         <Grid
-        sx={{
-          marginBottom: "10px"
-        }}>
+          sx={{
+            marginBottom: "10px"
+          }}>
           <Box
             component="img"
-            alt={selectedStory.description === null ? "no picture available" : selectedStory.descriptions}
-            src={selectedStory.urlToImage === null ? "https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376_960_720.jpg" : selectedStory.urlToImage}
+            alt={
+              selectedStory.description === null ?
+                "no picture available" :
+                selectedStory.descriptions
+            }
+            src={
+              selectedStory.urlToImage === null ?
+                "https://cdn.pixabay.com/photo/2014/05/21/22/28/old-newspaper-350376_960_720.jpg" :
+                selectedStory.urlToImage
+            }
             sx={{
               width: 1000,
               height: 600,
@@ -83,7 +96,7 @@ const DetailPage = ({ selectedStory, getMoreDetails }) => {
             component="p"
             sx={{ display: "inline", margin: "20px" }}
           >Author: {`${selectedStory.author}`.replace(/,/g, ', ')} via
-          {/* "{selectedStory.source.name}" */}
+            {/* "{selectedStory.source.name}" */}
           </Box>
           <Box
             component="p"
@@ -92,10 +105,10 @@ const DetailPage = ({ selectedStory, getMoreDetails }) => {
           </Box>
         </Grid>
         <Grid
-        sx={{
-          marginBottom: "10px",
-          width: "80%"
-        }}>
+          sx={{
+            marginBottom: "10px",
+            width: "80%"
+          }}>
           <Box
             component="span"
             sx={{ display: "inline", margin: "20px" }}
