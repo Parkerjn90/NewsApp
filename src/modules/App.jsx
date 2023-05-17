@@ -18,6 +18,8 @@ const App = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [selectedStory, setSelectedStory] = useState({});
 
+  const api = "3df0162e66714d528e79e3935312c7d7"
+
   const theme = createTheme({
     typography: {
       fontFamily: [
@@ -42,7 +44,7 @@ const App = () => {
   }
 
   const getTopStories = (country = currentCountry) => {
-    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=3df0162e66714d528e79e3935312c7d7&country=${country}`)
+    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=${api}&country=${country}`)
       .then(results => {
         setTopStories(results.data.articles);
         setTotal(results.data.totalResults);
@@ -53,7 +55,7 @@ const App = () => {
   };
 
   const getStoriesByCategory = (category) => {
-    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=3df0162e66714d528e79e3935312c7d7&country=${currentCountry}&category=${category}$&language=en`)
+    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=${api}&country=${currentCountry}&category=${category}$&language=en`)
       .then(results => {
         setTopStories(results.data.articles);
         setTotal(results.data.totalResults);
@@ -63,7 +65,7 @@ const App = () => {
   };
 
   const getQuery = (query) => {
-    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=3df0162e66714d528e79e3935312c7d7&country=${currentCountry}&q=${query}&language=en`)
+    axios.get(`https://newsapi.org/v2/top-headlines?apiKey=${api}&country=${currentCountry}&q=${query}&language=en`)
       .then(results => {
         setTopStories(results.data.articles);
         setTotal(results.data.totalResults);

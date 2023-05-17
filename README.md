@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# To Get this Repo started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+Run the following Commands:
+
+### npm install
 
 ### `npm start`
 
